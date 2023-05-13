@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unstable-nested-components */
 import React from 'react';
 // import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {StyleSheet, Image} from 'react-native';
@@ -27,7 +28,6 @@ const RootNavigator = () => {
         tabBarActiveTintColor: COLORS.primary,
         tabBarIcon: ({color, size, focused}) => {
           let iconName;
-
           if (route.name === 'Home') {
             iconName = require('../assests/home.png');
           } else if (route.name === 'Menu') {

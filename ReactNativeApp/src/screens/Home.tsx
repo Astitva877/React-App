@@ -1,10 +1,9 @@
 import React from 'react';
 // import react from 'react';
-import LinearGradient from 'react-native-linear-gradient';
 import {View, Text, Image, TouchableOpacity, StyleSheet} from 'react-native';
 import MainCard from '../components/MainCard';
 import ItemCard from '../components/ItemCard';
-
+import colors from '../constants/colors';
 const Home = () => {
   return (
     <View style={styles.container}>
@@ -28,21 +27,14 @@ const Home = () => {
             </View>
           </View>
         </View>
-        <View
-          style={{
-            flex: 0.25,
-            // backgroundColor: 'blue',
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}>
+        <View style={styles.middleFlex}>
           <MainCard />
         </View>
-        <View style={{flex: 0.65, alignItems: 'center'}}>
+        <View style={styles.lowerFlex}>
           <View
             style={{
               width: '90%',
               height: '100%',
-              // backgroundColor: 'red',
               flexDirection: 'row',
               justifyContent: 'space-between',
             }}>
@@ -50,7 +42,6 @@ const Home = () => {
               style={{
                 width: '47%',
                 height: '100%',
-                // backgroundColor: 'pink',
                 justifyContent: 'space-evenly',
               }}>
               <ItemCard
@@ -82,7 +73,6 @@ const Home = () => {
               style={{
                 width: '47%',
                 height: '100%',
-                // backgroundColor: 'pink',
                 justifyContent: 'space-evenly',
               }}>
               <ItemCard
@@ -144,12 +134,11 @@ const styles = StyleSheet.create({
   buttonView: {
     width: '50%',
     height: '100%',
-    // backgroundColor: 'pink',
     justifyContent: 'center',
     alignItems: 'flex-end',
   },
   buttonStyle: {
-    backgroundColor: '#3599FB',
+    backgroundColor: colors.button,
     height: '50%',
     width: '30%',
     justifyContent: 'center',
@@ -157,4 +146,10 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   addText: {fontSize: 12, fontWeight: '600', color: '#FFFFFF'},
+  lowerFlex: {flex: 0.65, alignItems: 'center'},
+  middleFlex: {
+    flex: 0.25,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
 });
