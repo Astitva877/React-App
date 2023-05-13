@@ -1,13 +1,12 @@
 import React from 'react';
 // import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {StyleSheet, Platform, TouchableOpacity} from 'react-native';
+import {StyleSheet, Image} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Home from '../screens/Home';
 import Menu from '../screens/Menu';
 import Amount from '../screens/Amount';
 import Notifications from '../screens/Notifications';
 import Profile from '../screens/Profile';
-import Icon from 'react-native-vector-icons/Ionicons';
 import CustomTabBarButton from '../components/CustomTabBarButton';
 import CustomTabBar from '../components/CustomTabBar';
 import COLORS from '../constants/colors';
@@ -30,18 +29,23 @@ const RootNavigator = () => {
           let iconName;
 
           if (route.name === 'Home') {
-            iconName = focused ? 'home' : 'ios-home-outline';
+            iconName = require('../assests/home.png');
           } else if (route.name === 'Menu') {
-            iconName = focused ? 'settings' : 'settings-outline';
+            iconName = require('../assests/menu.png');
           } else if (route.name === 'Amount') {
-            iconName = focused ? 'wallet' : 'wallet-outline';
+            iconName = require('../assests/amount.png');
           } else if (route.name === 'Notifications') {
-            iconName = focused
-              ? 'md-notifications-sharp'
-              : 'md-notifications-outline';
+            iconName = require('../assests/notifications.png');
+          } else if (route.name === 'Profile') {
+            iconName = require('../assests/profile.png');
           }
-
-          return <Icon name={iconName} size={22} color={'#000000'} />;
+          return (
+            <Image
+              style={{height: 28, width: 28}}
+              source={iconName}
+              resizeMode="contain"
+            />
+          );
         },
       })}>
       <Tab.Screen
@@ -76,7 +80,15 @@ const RootNavigator = () => {
           ),
         }}
       />
-      {/* <Tab.Screen name="Profile" component={Profile} /> */}
+      <Tab.Screen
+        name="Profile"
+        component={Profile}
+        options={{
+          tabBarButton: props => (
+            <CustomTabBarButton route="Profile" {...props} />
+          ),
+        }}
+      />
     </Tab.Navigator>
   );
 };
@@ -85,16 +97,8 @@ export default RootNavigator;
 
 const styles = StyleSheet.create({
   tabBarStyle: {
-    // position: 'absolute',
     backgroundColor: COLORS.primary,
     borderTopWidth: 0,
-    // borderRadius: 30,
-
-    // borderTopLeftRadius: 20,
-    // bottom: 15,
-    // color: 'black',
-    // right: 10,
-    // left: 10,
     height: 72,
   },
 });
